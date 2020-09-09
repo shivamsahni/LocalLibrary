@@ -1,7 +1,8 @@
 var createError = require('http-errors');
 var express = require('express');
 var mongoose = require('mongoose');
-var mongoDB = 'mongodb+srv://test_user:12abcdef12@cluster0.bsl5z.mongodb.net/local_library?retryWrites=true&w=majority';
+var dev_db_url = 'mongodb+srv://test_user:12abcdef12@cluster0.bsl5z.mongodb.net/local_library?retryWrites=true&w=majority';
+var mongoDB = process.env.MONGODB_URI || dev_db_url;
 mongoose.connect(mongoDB, { useNewUrlParser: true , useUnifiedTopology: true});
 
 var db = mongoose.connection;
